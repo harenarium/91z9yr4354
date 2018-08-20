@@ -1,21 +1,17 @@
 import React from "react";
 
-const URL = "https://deckofcardsapi.com/api/deck/";
 class Dealer extends React.Component {
   constructor() {
     super();
     this.state = {
-      success: false,
-      deck_id: "",
-      shuffled: false,
-      remaining: 0
+      success: false
     };
   }
 
   render() {
     return [
-      <button onClick={this.clickDraw}>Hit</button>,
-      <div>{this.state.deck_id}</div>
+      <button className="dealer_hand" onClick={this.props.clickHit}>Hit</button>,
+      <div>{this.props.hand}</div>
     ]
   }
 }

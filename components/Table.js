@@ -2,9 +2,9 @@ import React from "react";
 import PlayerHOC from "./PlayerHOC";
 import Player from "./Player";
 import Dealer from "./Dealer";
-
-const PlayerHand = PlayerHOC(Player);
-const DealerHand = PlayerHOC(Dealer);
+//
+// const PlayerHand = PlayerHOC(Player);
+// const DealerHand = PlayerHOC(Dealer);
 
 const URL = "https://deckofcardsapi.com/api/deck/";
 class Table extends React.Component {
@@ -38,6 +38,19 @@ class Table extends React.Component {
         }})
   };
 
+  clickHit = (e) => {
+    const whosHand = e.target.className
+    console.log(e.target.className);
+    fetch(URL + this.state.deck_id + "/draw/?count=1")
+      .then(response => response.json())
+      .then(json=>
+        {if(json.success){
+          this.setState({
+            [whosHand]: [ ...this.state[whosHand], json.cards[0].code]
+          })
+        }});
+  };
+
   render() {
     return [
       <button onClick={this.clickStart}>{this.state.success?"New Deck":"Start Game"}</button>,
@@ -45,10 +58,8 @@ class Table extends React.Component {
         "Deal Cards":"no more cards"}</button>
         :""}
       </div>,
-      <div>player: {this.state.player_hand.length}</div>,
-      <div>dealer: {this.state.dealer_hand.length}</div>,
-      <Player hand={this.state.player_hand}/>,
-      <Dealer/>
+      <Player hand={this.state.player_hand} clickHit={this.clickHit}/>,
+      <Dealer hand={this.state.dealer_hand} clickHit={this.clickHit}/>
 
     ]
   }

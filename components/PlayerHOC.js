@@ -8,15 +8,9 @@ const playerHOC = (WrappedComponent) => {
     constructor(props) {
       super(props);
       this.state = {};
-      this.onInputChange = this.onInputChange.bind(this);
-      this.submit = this.submit.bind(this);
     }
 
-    clickHit = () => {
-      fetch(URL + "/new/shuffle/?deck_count=1")
-        .then(response => response.json())
-        .then(json => this.setState(()=>json));
-    };
+    
 
     render() {
       return [
