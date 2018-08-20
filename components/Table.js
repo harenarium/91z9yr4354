@@ -1,4 +1,10 @@
 import React from "react";
+import PlayerHOC from "./PlayerHOC";
+import Player from "./Player";
+import Dealer from "./Dealer";
+
+const PlayerHand = PlayerHOC(Player);
+const DealerHand = PlayerHOC(Dealer);
 
 const URL = "https://deckofcardsapi.com/api/deck/";
 class Table extends React.Component {
@@ -40,7 +46,9 @@ class Table extends React.Component {
         :""}
       </div>,
       <div>player: {this.state.player_hand.length}</div>,
-      <div>dealer: {this.state.dealer_hand.length}</div>
+      <div>dealer: {this.state.dealer_hand.length}</div>,
+      <Player hand={this.state.player_hand}/>,
+      <Dealer/>
 
     ]
   }
