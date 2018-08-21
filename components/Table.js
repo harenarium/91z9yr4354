@@ -58,8 +58,8 @@ class Table extends React.Component {
         "Deal Cards":"no more cards"}</button>
         :""}
       </div>,
-      <Player hand={this.state.player_hand} clickHit={this.clickHit}/>,
-      <Dealer hand={this.state.dealer_hand} clickHit={this.clickHit}/>
+      <Player hand={this.state.player_hand} clickHit={this.clickHit} />,
+      <Dealer hand={this.state.dealer_hand} clickHit={this.clickHit} />
 
     ]
   }
