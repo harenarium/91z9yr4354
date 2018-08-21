@@ -23,7 +23,11 @@ class Table extends React.Component {
   clickStart = () => {
     fetch(URL + "/new/shuffle/?deck_count=6")
       .then(response => response.json())
-      .then(json => this.setState(()=>json));
+      .then(json => this.setState(()=>json))
+      .then(()=>this.setState({
+        player_hand: [],
+        dealer_hand: []
+      }));
   };
 
   clickDraw = () => {
@@ -51,15 +55,37 @@ class Table extends React.Component {
         }});
   };
 
+  cardValue = (code) => {
+    let value = 0
+    switch (code[0]) {
+      case "A":
+        value = 1
+        break;
+      case "2": case "3": case "4": case "5": case "6": case "7": case "8": case "9":
+        value = parseInt(code[0])
+        break;
+      case "0": case "J": case "Q": case "K":
+        value = 10
+        break;
+    }
+    return value
+  }
+
   render() {
     return [
       <button onClick={this.clickStart}>{this.state.success?"New Deck":"Start Game"}</button>,
-      <div>{this.state.success? <button onClick={this.clickDraw}>{this.state.remaining > 0 ?
-        "Deal Cards":"no more cards"}</button>
+      <div>{this.state.success?
+        <div>
+          <button onClick={this.clickDraw}>{this.state.remaining > 0 ? "Deal Cards" : "no more cards"}</button>
+          add deck, newround
+          <br/>
+          <br/>
+          Player: <Player hand={this.state.player_hand} clickHit={this.clickHit} cardValue={this.cardValue}/>
+          <br/>
+          Dealer: <Dealer hand={this.state.dealer_hand} clickHit={this.clickHit} cardValue={this.cardValue}/>
+        </div>
         :""}
       </div>,
-      <Player hand={this.state.player_hand} clickHit={this.clickHit} />,
-      <Dealer hand={this.state.dealer_hand} clickHit={this.clickHit} />
 
     ]
   }

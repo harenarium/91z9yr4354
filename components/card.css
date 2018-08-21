@@ -1,0 +1,64 @@
+.cardOutline {
+  display: inline-block;
+  width:15%;
+  background: #FFF;
+  border: 2px solid black;
+  border-radius: 5px;
+  box-shadow: -2px 2px 5px #999;
+  position: relative;
+}
+
+.cardBack1 {
+  display: block;
+  margin: 5%;
+  border: 4px double red;
+  borderRadius: 5px;
+}
+
+.cardBack2 {
+  margin: 1%;
+  border: 6px solid red;
+  borderRadius: 3px;
+}
+
+.cardBack3 {
+  margin: 1%;
+  padding-top: 150%;
+  background-color: #C00;
+  background-image: radial-gradient(closest-side, transparent 98%, rgba(0,0,0,.25) 99%),
+  radial-gradient(closest-side, transparent 98%, rgba(0,0,0,.25) 99%);
+  background-size: 15% 10%;
+  background-position:0 0, 9% 5.5%;
+}
+
+.cardFront1 {
+  display: block;
+  margin: 20%;
+  border: 4px double black;
+  borderRadius: 5px;
+}
+
+.cornerTop {
+  float: left;
+  height: 0px;
+  font-size: 150%;
+  position: relative;
+  left: 2%;
+}
+
+.cornerBottom {
+  float: right;
+  height: 0px;
+  font-size: 150%;
+  position: relative;
+  left: -2%;
+}
+
+.cardFront2 {
+  margin: 1%;
+}
+
+.cardFront3 {
+  margin: 1%;
+  padding-top: 173%;
+}
