@@ -48,7 +48,6 @@ class Player extends React.Component {
     return number+suit
   }
 
-
   angleMaker = (position) => {
     console.log(position);
     let middle = position[1]/2 - 0.5
@@ -58,19 +57,26 @@ class Player extends React.Component {
     return {transform: angle, left: leftPosition, top: topPosition}
   }
 
+  colorMaker = (code) => {
+    if (code[1] === "H" || code[1] === "Q"){
+      return {fontColor: "red"}
+
+    }
+  }
+
   render() {
     return [
       <div onClick={this.clickHandler} className="cardOutline" style={this.angleMaker(this.state.position)}>
       {this.state.clicked ?
         <div>
-          <div className="cornerTop">{this.cornerMaker(this.props.card)}</div>
+          <div className="cornerTop" style={this.colorMaker(this.props.card)}>{this.cornerMaker(this.props.card)}</div>
           <div className="cardFront1">
             <div className="cardFront2">
               <div className="cardFront3">
               </div>
             </div>
           </div>
-          <div className="cornerBottom">{this.cornerMaker(this.props.card)}</div>
+          <div className="cornerBottom" style={this.colorMaker(this.props.card)}>{this.cornerMaker(this.props.card)}</div>
         </div>
       :
         <div className="cardBack1">

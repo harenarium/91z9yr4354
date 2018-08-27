@@ -1,5 +1,4 @@
 import React from "react";
-import PlayerHOC from "./PlayerHOC";
 import Player from "./Player";
 import Dealer from "./Dealer";
 //
@@ -77,7 +76,6 @@ class Table extends React.Component {
       <div>{this.state.success?
         <div>
           <button onClick={this.clickDraw}>{this.state.remaining > 0 ? "Deal Cards" : "no more cards"}</button>
-          add deck, newround
           <br/>
           <br/>
           Player: <Player hand={this.state.player_hand} clickHit={this.clickHit} cardValue={this.cardValue}/>
