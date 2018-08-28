@@ -47,11 +47,11 @@
 }
 
 .cornerBottom {
-  float: right;
   height: 0px;
   font-size: 150%;
   position: relative;
   left: -2%;
+  bottom: 20%
 }
 
 .cardFront2 {

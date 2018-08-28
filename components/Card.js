@@ -75,8 +75,8 @@ class Player extends React.Component {
               <div className="cardFront3">
               </div>
             </div>
+            <div className="cornerBottom" style={this.colorMaker(this.props.card)}>{this.cornerMaker(this.props.card)}</div>
           </div>
-          <div className="cornerBottom" style={this.colorMaker(this.props.card)}>{this.cornerMaker(this.props.card)}</div>
         </div>
       :
         <div className="cardBack1">
